@@ -17,7 +17,7 @@ const firebaseConfig = {
 };
 
 const app = createApp(App)
-
+console.log('main');
 // Função para configurar o Firebase e adicioná-lo como plugin no Vue
 function configureFirebase() {
   const firebaseApp = initializeApp(firebaseConfig)
@@ -29,13 +29,16 @@ function configureFirebase() {
   app.config.globalProperties.$auth = auth
   app.config.globalProperties.$db = db
   app.config.globalProperties.$provider = provider
+
+  return [ auth, db, provider ]
 }
 
 // Chame a função configureFirebase antes de montar a aplicação Vue
-configureFirebase()
+const [ auth, db, provider ]  =  configureFirebase()
 
-app
-  .use(router)
-  .use(store)
-  .use(vuetify)
-  .mount('#app')
+
+app.use(router).use(store).use(vuetify).mount('#app')
+
+export {
+  auth, db, provider
+}
