@@ -1,23 +1,59 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { collection, getDocs,addDoc,doc , getDoc, updateDoc, deleteDoc} from "firebase/firestore";
-// import dotenv from 'dotenv'
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://support.google.com/firebase/answer/7015592
-
+import { getFirestore, collection, addDoc, doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyC2YaseeRdmaHGfF26IDrRuhcXh0H8mjt0",
-    authDomain: "botfinancas-29527.firebaseapp.com",
-    projectId: "botfinancas-29527",
-    storageBucket: "botfinancas-29527.appspot.com",
-    messagingSenderId: "885551410938",
-    appId: "1:885551410938:web:ca1f4b4f15620edf036343"
-  };
+  apiKey: "AIzaSyC2YaseeRdmaHGfF26IDrRuhcXh0H8mjt0",
+  authDomain: "botfinancas-29527.firebaseapp.com",
+  projectId: "botfinancas-29527",
+  storageBucket: "botfinancas-29527.appspot.com",
+  messagingSenderId: "885551410938",
+  appId: "1:885551410938:web:ca1f4b4f15620edf036343"
+};
+
+
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function loginComGoogle() {
+  const provider = new GoogleAuthProvider();
   
-  const app = initializeApp(firebaseConfig)
-  
-  const db = getFirestore(app);
+  try {
+    const result = await signInWithPopup(provider);
+    const user = result.user;
+    console.log('Usuário autenticado com sucesso:', user);
+  } catch (error) {
+    console.error('Erro ao autenticar usuário:', error);
+  }
+}
+
+loginComGoogle();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const deleteFinance = async (id) => {
     await deleteDoc(doc(db, "revenue", id));
@@ -42,7 +78,7 @@ const firebaseConfig = {
     }
   }
   
-  addMoneyDB();
+  // addMoneyDB();
   
 // getFilterFinance()
 
