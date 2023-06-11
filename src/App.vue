@@ -19,7 +19,7 @@ import Admin from './layout/Admin.vue';
 import { onBeforeMount } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged, getAuth } from 'firebase/auth'
-import { auth, db, provider, } from '@/main'
+import { auth, db, provider,  } from '@/main'
 import { doc, setDoc, getDoc } from "firebase/firestore";
 
 export default {
@@ -28,22 +28,7 @@ export default {
     const router = useRouter()
     console.log('onBeforeMount');
     onBeforeMount(async () => {
-      const userData = localStorage.getItem('userData')
-      console.log('onBeforeMount');
-      if (userData) {
-        // Usuário encontrado no Local Storage
-        const { uid, photoURL, displayName } = JSON.parse(userData)
 
-        // Atualizar o estado de autenticação diretamente, sem chamar onAuthStateChanged
-        const user = { uid, photoURL, displayName }
-        
-
-        // Redirecionar para a página adequada com base na rota atual
-        if (route.path === '/login') {
-          router.replace('/')
-        }
-      } else {
-        // Usuário não encontrado no Local Storage, consultar o banco de dados Firebase
         onAuthStateChanged(auth, async (user) => {
           if (!user) {
             router.replace('/login')
@@ -62,7 +47,7 @@ export default {
           }
         })
       }
-    })
+    )
   },
   components: { Admin }
 }

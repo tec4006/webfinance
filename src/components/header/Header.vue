@@ -8,7 +8,17 @@
     
         <v-app-bar color="primary" >
           <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-          <v-toolbar-title class="primary">Finance<strong>Dkrv</strong></v-toolbar-title>
+          <v-toolbar-title class="primary ">Finance<strong>Dkrv</strong> 
+
+          </v-toolbar-title>
+          <v-toolbar-title class="primary  d-flex justify-end ">
+            <v-avatar
+             class="ma-10"
+              size="large"
+              :image="this.photoURL"
+            >
+            </v-avatar>
+          </v-toolbar-title>
         </v-app-bar>
    
         <v-main class="color">
@@ -22,14 +32,18 @@
   name: 'Header'
     export default {
       data: () => ({ 
-        
+        photoURL:  "",
         drawer: false ,
        }),
-  
-  
-      
+    
+    mounted() {
+      const userData = localStorage.getItem('userData')
+
+        const { uid, photoURL, displayName } = JSON.parse(userData)
+        this.photoURL = photoURL
+        // console.log(this.photoURL );
+    },
     }
-  
   </script>
   
   <style scoped>
