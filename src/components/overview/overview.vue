@@ -27,7 +27,7 @@
     <v-divider color="#FF1867"  :thickness="9"></v-divider>
     <v-btn 
     class="w-100 mt-5" 
-    href="/about" 
+    href="/accounts" 
     color="secondary"
     elevation="0">
       <v-row align="center" >

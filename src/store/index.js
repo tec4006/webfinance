@@ -12,23 +12,23 @@ export const useStore = defineStore('storeId', {
       category: '',
       date: '',
       conta: '',
-      receita: ''
+
     }
   },
   actions:  {
-    salva(description){
-      description ,
-      this.money,
-      this.category ,
-      this.date ,
-      this.conta,
-      this.receita,
+    salva(description, category, money, date, conta, receita){
+      this.description = description,
+      this.money = money,
+      this.category = category,
+      this.date = date,
+      this.conta = conta,
+
       console.log(this.description);
     }
   },
   getters: {
     olha(){
-      return console.log(this.receita);
+      return this.description
     }
   }
 })
