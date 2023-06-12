@@ -3,14 +3,17 @@ import HomeView from '../views/HomeView.vue'
 import LoginViewView from '../views/LoginView.vue'
 import AccountsView from '@/views/accounts.vue'
 import CreditcardsView from '@/views/creditcards.vue'
-import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged, getAuth } from 'firebase/auth'
-import { auth, db, provider } from '@/main'
+
+
+
 import Guard from '@/module/auth'
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView,
+    beforeEnter: Guard.auth
+
 
   },
   {
