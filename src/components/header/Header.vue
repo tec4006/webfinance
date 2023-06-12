@@ -2,8 +2,43 @@
 <template>
     <v-app id="inspire" color="secondary">
         <v-navigation-drawer v-model="drawer" color="secondary">
-           <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
+         <v-text-field>Finance<strong>Dkrv</strong> </v-text-field>
+        
+        <div
+          v-for="[icon, text, link] in links"
+          :key="icon"
+          link
+        >
+        <v-btn
+          class="w-100 mt-5"
+          href="/about"
+          color="secondary"
+          elevation="0"
+          :to="link"
+        >
+      <v-row
+        align="center"
+      >
+       <v-col
+         class="text-left"
+         cols="6"
+       >
+          
+       <v-sheet
+         width="150"
+         color="secondary"
+       ><v-icon
+         class="pr-5"
+         size="large"
+         color="primary"
+         :icon="icon"
+       >
+      </v-icon>{{text}}</v-sheet>
+        </v-col>
+      </v-row>
+    </v-btn>
+      </div>
+    
         </v-navigation-drawer>
     
         <v-app-bar color="primary" >
@@ -14,7 +49,7 @@
           <v-toolbar-title class="primary  d-flex justify-end ">
             <v-avatar
              class="ma-10"
-              size="large"
+              size="small"
               :image="this.photoURL"
             >
             </v-avatar>
@@ -34,13 +69,24 @@
       data: () => ({ 
         photoURL:  "",
         drawer: false ,
-       }),
+
+      cards: ['Today', 'Yesterday'],
+
+      links: [
+        ['mdi-view-dashboard', 'Dashboard', '/'],
+        ['mdi-bank', 'Contas', '/accounts'],
+        ['mdi-transfer', 'Transações'],
+        ['mdi-credit-card-outline', 'Cartões', 'creditcards'],
+        ['mdi-chart-areaspline', 'chart'],
+      ],
+    }),
+
     
     mounted() {
-      const userData = localStorage.getItem('userData')
+      // const userData = localStorage.getItem('userData')
 
-        const { uid, photoURL, displayName } = JSON.parse(userData)
-        this.photoURL = photoURL
+        // const { uid, photoURL, displayName } = JSON.parse(userData)
+        // this.photoURL = photoURL
         // console.log(this.photoURL );
     },
     }
@@ -84,6 +130,7 @@
   
   nav a.router-link-exact-active {
     color: #42b983;
+
   }
   </style>
   

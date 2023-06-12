@@ -3,14 +3,9 @@
   <v-app class="color" >
 
     <v-card
-
       class="ma-auto"
       max-width="394"
-      
-      color="primary"
-      
-      
-    >
+      color="primary">
       <v-img
         src="https://techcrunch.com/wp-content/uploads/2019/10/ShieldsFamily_3x_L4olEeF.max-1000x1000.png"
         height="100px"

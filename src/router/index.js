@@ -1,24 +1,38 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginViewView from '../views/LoginView.vue'
+import AccountsView from '@/views/accounts.vue'
+import CreditcardsView from '@/views/creditcards.vue'
 import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged, getAuth } from 'firebase/auth'
 import { auth, db, provider } from '@/main'
+import Guard from '@/module/auth'
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView,
-    meta: {
-      auths: true,
-    },
+
   },
   {
     path: '/about',
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
-    meta: {
-      auths: true,
-    },
+    beforeEnter: Guard.auth
+    
+  },
+  {
+    path: '/accounts',
+    name: 'accounts',
+    component: AccountsView,
+    beforeEnter: Guard.auth
+    
+  },
+  {
+    path: '/creditcards',
+    name: 'creditcards',
+    component: CreditcardsView,
+    beforeEnter: Guard.auth
+
   },
   {
     path: '/login',

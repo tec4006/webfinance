@@ -27,25 +27,10 @@ export default {
     const route = useRoute()
     const router = useRouter()
     console.log('onBeforeMount');
+
     onBeforeMount(async () => {
-
-        onAuthStateChanged(auth, async (user) => {
-          if (!user) {
-            router.replace('/login')
-          } else if (route.path === '/login' || user) {
-            router.replace('/')
-            const uid = user.uid
-            const photoURL = user.photoURL
-            const displayName = user.displayName
-            const email = user.email
-
-            // Armazenar dados do usuário no Local Storage
-            const userData = { uid, photoURL, displayName }
-            localStorage.setItem('userData', JSON.stringify(userData))
-
-            await setDoc(doc(db, email, 'user'), { uid, photoURL, displayName });
-          }
-        })
+      console.log('aa');
+        
       }
     )
   },

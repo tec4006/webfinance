@@ -21,24 +21,25 @@ console.log('main');
 // Função para configurar o Firebase e adicioná-lo como plugin no Vue
 function configureFirebase() {
   const firebaseApp = initializeApp(firebaseConfig)
-  const auth = getAuth(firebaseApp)
+  const auths = getAuth(firebaseApp)
   const db = getFirestore(firebaseApp)
   const provider = new GoogleAuthProvider()
 
   // Adicione as instâncias do Firebase ao contexto global do Vue
-  app.config.globalProperties.$auth = auth
+  app.config.globalProperties.$auth = auths
   app.config.globalProperties.$db = db
   app.config.globalProperties.$provider = provider
 
-  return [ auth, db, provider ]
+  return [ auths, db, provider, firebaseApp ]
 }
 
 // Chame a função configureFirebase antes de montar a aplicação Vue
-const [ auth, db, provider ]  =  configureFirebase()
+const [ auths , db, provider,firebaseApp ]  =  configureFirebase()
 
-
-app.use(router).use(store).use(vuetify).mount('#app')
+import { createPinia } from 'pinia'
+const pinia = createPinia()
+app.use(router).use(store).use(pinia).use(vuetify).mount('#app')
 
 export {
-  auth, db, provider
+  auths , db, provider,firebaseApp
 }

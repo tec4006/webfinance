@@ -1,19 +1,34 @@
-import { createStore } from 'vuex'
+import { defineStore } from 'pinia'
 
-export default createStore({
-  state: {
-    user: true
-      
-  },
-  getters: {
-  },
-  mutations: {
-    transactions(state, data){
-      state.transactions = data
+
+
+export const useStore = defineStore('storeId', {
+  // arrow function recommended for full type inference
+  state: () => {
+    return {
+      // all these properties will have their type inferred automatically
+      description: '',
+      money: '',
+      category: '',
+      date: '',
+      conta: '',
+      receita: ''
     }
   },
-  actions: {
+  actions:  {
+    salva(description){
+      description ,
+      this.money,
+      this.category ,
+      this.date ,
+      this.conta,
+      this.receita,
+      console.log(this.description);
+    }
   },
-  modules: {
+  getters: {
+    olha(){
+      return console.log(this.receita);
+    }
   }
 })
