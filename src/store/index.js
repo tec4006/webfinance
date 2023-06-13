@@ -17,7 +17,7 @@ export const useStore = defineStore('storeId', {
   },
   actions:  {
     salva(description){
-      description ,
+      this.description = description,
       this.money,
       this.category ,
       this.date ,
