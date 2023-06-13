@@ -120,7 +120,7 @@
 
   </v-row>
 
-  <h4>{{ receita.money }}</h4>
+  <h4>{{ da }}</h4>
 
   </Header>
 
@@ -185,7 +185,7 @@ export default defineComponent({
       storeId.salva(this.receita.description)
       
       
-      storeId.olha
+       this.da =  storeId.olha
     }
   },
 
