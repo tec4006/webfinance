@@ -12,7 +12,7 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    beforeEnter: Guard.auth
+   // beforeEnter: Guard.auth
 
 
   },
@@ -20,21 +20,21 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
-    beforeEnter: Guard.auth
+    //beforeEnter: Guard.auth
     
   },
   {
     path: '/accounts',
     name: 'accounts',
     component: AccountsView,
-    beforeEnter: Guard.auth
+   // beforeEnter: Guard.auth
     
   },
   {
     path: '/creditcards',
     name: 'creditcards',
     component: CreditcardsView,
-    beforeEnter: Guard.auth
+  //  beforeEnter: Guard.auth
 
   },
   {
