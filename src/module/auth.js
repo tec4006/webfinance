@@ -12,7 +12,6 @@ export default {
             next('/login')
           } else if (user) {
             next()
-
             const { uid, photoURL, displayName, email } = user
             const userDatas = {uid, photoURL, displayName, email}
             // Armazenar dados do usuário no Local Storage
